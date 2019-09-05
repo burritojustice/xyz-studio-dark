@@ -1,9 +1,5 @@
 # Author: Geraldine Sarmiento
 
-# Tangram Blocks
-# https://tangrams.github.io/blocks/
-# Patricio Gonzalez Vivo
-
 cameras:
     camera1:
         type: perspective
@@ -19,47 +15,22 @@ global:
     # https://mapzen.com/documentation/overview/#developer-accounts-and-api-keys
     sdk_api_key: '3eqm2_bfTNGZ85ar20fVyA'     # set this value to your Mapzen API key
 
+    black_color:                  [0.440,0.440,0.440]
+    dark_color:                   [0.410,0.410,0.410]
+    mid_color:                    [0.380,0.380,0.380]
+    midlight_color:               [0.350,0.350,0.350]
+    extralight_color:             [0.320,0.320,0.320]
+    light_color:                  [0.300,0.300,0.300]
+    lighter_color:                [0.290,0.290,0.290]
+    lightest_color:               [0.260,0.260,0.260]
+    ultralight_color:             [0.230,0.230,0.230]
+    offwhite_color:               [0.190,0.190,0.190]
+    white_color:                  [0.145,0.145,0.145]
 
-    # black_color:                  [0.000,0.000,0.000]
-    # dark_color:                   [0.005,0.005,0.005]
-    # mid_color:                    [0.010,0.010,0.010]
-    # midlight_color:               [0.015,0.015,0.015]
-    # extralight_color:             [0.030,0.030,0.030]
-    # light_color:                  [0.040,0.040,0.040]
-    # lighter_color:                [0.050,0.050,0.050]
-    # lightest_color:               [0.060,0.060,0.060]
-    # ultralight_color:             [0.070,0.070,0.070]
-    # offwhite_color:               [0.080,0.080,0.080]
-    # white_color:                  [0.090,0.090,0.090]
-
-    black_color:                  [0.450,0.450,0.450]
-    dark_color:                   [0.400,0.400,0.400]
-    mid_color:                    [0.350,0.350,0.350]
-    midlight_color:               [0.300,0.300,0.300]
-    extralight_color:             [0.250,0.250,0.250]
-    light_color:                  [0.200,0.200,0.200]
-    lighter_color:                [0.150,0.150,0.150]
-    lightest_color:               [0.120,0.120,0.120]
-    ultralight_color:             [0.090,0.090,0.090]
-    offwhite_color:               [0.050,0.050,0.050]
-    white_color:                  [0.030,0.030,0.030]
-
-    # black_color:                  [0.080,0.080,0.080]
-    # dark_color:                   [0.070,0.070,0.070]
-    # mid_color:                    [0.060,0.060,0.060]
-    # midlight_color:               [0.050,0.050,0.050]
-    # extralight_color:             [0.040,0.040,0.040]
-    # light_color:                  [0.035,0.035,0.035]
-    # lighter_color:                [0.030,0.030,0.030]
-    # lightest_color:               [0.025,0.025,0.025]
-    # ultralight_color:             [0.020,0.020,0.020]
-    # offwhite_color:               [0.010,0.010,0.010]
-    # white_color:                  [0.900,0.000,0.000]
-
-    tunnel_color:                 [0.110,0.110,0.110]
+    tunnel_color:                 [0.190,0.190,0.190]
 
     roads_text_fill:              [0.700,0.700,0.700]
-    roads_text_stroke:            [0.120,0.120,0.120]
+    roads_text_stroke:            [0.224,0.224,0.224]
 
     text_font_family: 'Orbitron'
 
@@ -219,7 +190,7 @@ fonts:
 
 scene:
     background:
-        color: [0.000,0.000,0.000]
+        color: [0.224,0.224,0.224]
 
 sources:
     # mapzen:
@@ -256,17 +227,15 @@ layers:
         data: { source: mapzen, layer: earth }
         draw:
             polygons:
-                style: earth-dots
                 order: global.feature_order
-                color: [1.000,1.000,1.000]
+                color: [0.224,0.224,0.224]
 
     water:
         data: { source: mapzen, layer: water }
         draw:
             polygons:
-                style: water-dots
                 order: global.feature_order
-                color: [1.000,1.000,1.000]
+                color: [0.145,0.145,0.145]
 
         lakes:
             filter:
@@ -292,13 +261,13 @@ layers:
                     - { $zoom: { min: 15 } }
             draw:
                 polygons:
-                    color: [1.000,1.000,1.000]
+                    color: [0.145,0.145,0.145]
 
         other-water-areas:
             filter: { not: { kind: [ocean, lake, water, reservoir] }, $zoom: { min: 11 }, area: { min: 100 } }
             draw:
                 polygons:
-                    color: [1.000,1.000,1.000]
+                    color: [0.145,0.145,0.145]
 
     roads:
         data: { source: mapzen, layer: roads }
@@ -847,8 +816,7 @@ layers:
                     - protect_class: ['2','3','5']
             draw:
                 polygons:
-                    style: park-dots-multi
-                    color: [1.000,1.000,1.000]
+                    color: [0.200,0.200,0.200]
                     visible: true
             us_national_park:
                 # yosemite national park, death valley national park, grand canyon national park
@@ -858,8 +826,7 @@ layers:
                         - protect_class: ['2','3','5']
                 draw:
                     polygons:
-                        style: park-dots-multi
-                        color: [1.000,1.000,1.000]
+                        color: [0.200,0.200,0.200]
                         visible: true
 
         conservation:
@@ -869,8 +836,7 @@ layers:
                 not: { protect_class: ['2','3','5']}
             draw:
                 polygons:
-                    style: conservation-dots-multi
-                    color: [1.000,1.000,1.000]
+                    color: [0.200,0.200,0.200]
                     visible: true
 
         national_forest_level_6:
@@ -882,16 +848,14 @@ layers:
                     - operator: ['United States Forest Service']
             draw:
                 polygons:
-                    style: green-area-dots
-                    color: [1.000,1.000,1.000]
+                    color: [0.200,0.200,0.200]
                     visible: true
 
         forest-landcover:
             filter: { kind: [forest, natural_forest, wood, natural_wood, natural_park], $zoom: { min: 10 }, not: { operator: "United States Forest Service" } }
             draw:
                 polygons:
-                    style: forest-dots-multi
-                    color: [1.000,1.000,1.000]
+                    color: [0.200,0.200,0.200]
                     visible: true
 
         parks-and-national-forests-not-national-park:
@@ -905,8 +869,7 @@ layers:
             # default for national forests and more?
             draw:
                 polygons:
-                    style: park-dots
-                    color: [1.000,1.000,1.000]
+                    color: [0.200,0.200,0.200]
                     visible: true
             national_park:
                 #filter: function() { return feature.name && (feature.name.indexOf('National Park') > -1); }
@@ -916,47 +879,8 @@ layers:
                         - not: [ protect_class: ['2','3','5','6'], operator: [ "United States National Park Service"] ]
                 draw:
                     polygons:
-                        style: park-dots
-                        color: [1.000,1.000,1.000]
+                        color: [0.200,0.200,0.200]
                         visible: true
-
-        farm:
-            filter:
-                kind: [farm, farmland]
-                $zoom: { min: 10}
-            draw:
-                polygons:
-                    style: farm-dots
-                    color: global.offwhite_color
-                    visible: true
-
-        #tier4:
-        cemetery:
-            filter:
-                kind: cemetery
-            draw:
-                polygons:
-                    style: cemetery-dots
-                    color: global.lighter_color
-                    visible: true
-
-    #     golf_course:
-    #         filter:
-    #             kind: golf_course
-    #         draw:
-    #             polygons:
-    #                 style: golf-dots-multi
-    #                 color: global.lightest_color
-    #                 visible: true
-
-    #     hospital:
-    #         filter:
-    #             kind: hospital
-    #         draw:
-    #             polygons:
-    #                 style: hospital-dots-multi
-    #                 color: global.lightest_color
-    #                 visible: true
 
     buildings:
         data: { source: mapzen, layer: buildings }
@@ -966,7 +890,7 @@ layers:
             polygons:
                 visible: false
                 order: 438
-                color: [1.000,1.000,1.000]
+                color: [0.259,0.259,0.259]
 
         footprints:
             filter:
@@ -982,36 +906,6 @@ layers:
             draw:
                 polygons:
                     visible: true
-                    style: building-dots
-
-        in_university:
-            filter: { landuse_kind: [university,school] }
-            draw:
-                polygons:
-                    visible: true
-                    style: building-dots-multi
-
-        in_hospital:
-            filter: { landuse_kind: hospital }
-            draw:
-                polygons:
-                    visible: true
-                    style: building-dots-multi
-
-        in_airport:
-            filter: { landuse_kind: [aerodrome, runway, taxiway] }
-            draw:
-                polygons:
-                    visible: true
-                    style: building-dots-multi
-
-        in_park:
-            filter:
-                landuse_kind: [park,forest,nature_reserve,conservation,golf_course,garden]
-            draw:
-                polygons:
-                    visible: true
-                    style: building-dots-multi
 
     boundaries:
         data: { source: mapzen, layer: boundaries }
@@ -1028,11 +922,10 @@ layers:
                 country-outerline:
                     style: lines
                     order: function() { return (feature.sort_rank -1); }
-                    color: global.white_color
+                    color: [0.180,0.180,0.180]
                     width: [[0, 0px], [4, 2px], [8, 6px], [14, 8px], [17, 16m]]
                 lines:
-                    color: [0.280,0.280,0.280]
-                    style: lines-dots
+                    color: [0.145,0.145,0.145]
                     width: [[0, 0px], [5, 0px], [6, 1px], [14, 15px]]
             water:
                 filter: { maritime_boundary: true }
@@ -1041,26 +934,26 @@ layers:
                         visible: false
                     lines:
                         visible: false
-            # country-labels:
-            #     filter: { name: true, $zoom: { min: 8 }, not: { maritime_boundary: true } }
-            #     draw:
-            #         text-blend-order:
-            #             priority: 2
-            #             visible: global.text_visible_admin
-            #             text_source: global.ux_language_text_source_boundary_lines_left_right
-            #             offset: [[8, [0, 7px]], [11, [0, 8px]], [12, [0, 9px]]]
-            #             text_wrap: 100
-            #             font:
-            #                 family: global.text_font_family
-            #                 size: 10px
-            #                 fill: global.black_color
-            #                 transform: uppercase
-            #     no-left-right:
-            #         filter: { "name:left": false, "name:right": false }
-            #         draw:
-            #             text-blend-order:
-            #                 text_source: global.ux_language_text_source_boundary_lines
-            #                 offset: 0px
+            country-labels:
+                filter: { name: true, $zoom: { min: 8 }, not: { maritime_boundary: true } }
+                draw:
+                    text-blend-order:
+                        priority: 2
+                        visible: true
+                        text_source: global.ux_language_text_source_boundary_lines_left_right
+                        offset: [[8, [0, 7px]], [11, [0, 8px]], [12, [0, 9px]]]
+                        text_wrap: 100
+                        font:
+                            family: global.text_font_family
+                            size: 10px
+                            fill: [0.480,0.480,0.480]
+                            transform: uppercase
+                no-left-right:
+                    filter: { "name:left": false, "name:right": false }
+                    draw:
+                        text-blend-order:
+                            text_source: global.ux_language_text_source_boundary_lines
+                            offset: 0px
 
         other_country_boundary_disputed_etc:
             filter: { kind: [disputed, indefinite, indeterminate, lease_limit, line_of_control, overlay_limit] }
@@ -1068,7 +961,7 @@ layers:
                 lines:
                     dash: [1.25, 1.25]
                     order: global.feature_order
-                    color: global.lightest_color
+                    color: [0.180,0.180,0.180]
                     width: [[1,0.2px],[9,1.5px],[17,10m]]
             disputed:
                 filter: { kind: [disputed, line_of_control] }
@@ -1076,8 +969,7 @@ layers:
                     lines:
                         dash: [2.0, 1.0]
                         order: global.feature_order
-                        # style: lines-dots
-                        color: global.lightest_color
+                        color: [0.180,0.180,0.180]
                         width: [[1, 1px], [9, 4px], [17,14m]]
 
         region:
@@ -1087,7 +979,7 @@ layers:
                     - kind_detail: [3,4]
             draw:
                 lines:
-                    color: global.white_color
+                    color: [0.169,0.169,0.169]
                     # width: [[0, 0.5px], [9, 2px], [14, 4px], [16, 6.5px], [17, 16m]]
                     width: [[0, 0.5px], [14, 3px], [16, 7px], [17, 17m]]
 
@@ -1110,28 +1002,28 @@ layers:
                     lines:
                         visible: false
 
-        #     region-labels:
-        #         filter: { name: true, $zoom: { min: 9 }, not: { maritime_boundary: true } }
-        #         draw:
-        #             text-blend-order:
-        #                 priority: 3
-        #                 visible: global.text_visible_admin
-        #                 text_source: global.ux_language_text_source_boundary_lines_left_right
-        #                 offset: [[8,[0, 5px]], [11, [0, 6px]], [12,[0, 7px]]]
-        #                 text_wrap: 100
-        #                 # offset: [0px, 10px]
-        #                 # anchor: top
-        #                 font:
-        #                     family: global.text_font_family
-        #                     size: 9px
-        #                     fill: global.mid_color
-        #                     transform: uppercase
-        #         no-left-right:
-        #             filter: { "name:left": false, "name:right": false }
-        #             draw:
-        #                 text-blend-order:
-        #                     text_source: global.ux_language_text_source_boundary_lines
-        #                     offset: 0px
+            region-labels:
+                filter: { name: true, $zoom: { min: 9 }, not: { maritime_boundary: true } }
+                draw:
+                    text-blend-order:
+                        priority: 3
+                        visible: true
+                        text_source: global.ux_language_text_source_boundary_lines_left_right
+                        offset: [[8,[0, 5px]], [11, [0, 6px]], [12,[0, 7px]]]
+                        text_wrap: 100
+                        # offset: [0px, 10px]
+                        # anchor: top
+                        font:
+                            family: global.text_font_family
+                            size: 9px
+                            fill: [0.480,0.480,0.480]
+                            transform: uppercase
+                no-left-right:
+                    filter: { "name:left": false, "name:right": false }
+                    draw:
+                        text-blend-order:
+                            text_source: global.ux_language_text_source_boundary_lines
+                            offset: 0px
 
     places:
         data: { source: mapzen, layer: places }
@@ -1157,7 +1049,7 @@ layers:
                     text_source: global.ux_language_text_source
                     font:
                         fill: [0.450,0.450,0.450]
-                        stroke: { color: [0.150,0.150,0.150], width: 4px }
+                        stroke: { color: [0.224,0.224,0.224], width: 4px }
             country-z2-3:
                 filter:
                     $zoom: [2,3]
@@ -1265,7 +1157,7 @@ layers:
                         size: 11px
                         weight: normal
                         fill: [0.400,0.400,0.400]
-                        stroke: { color: [0.150,0.150,0.150], width: 4px }
+                        stroke: { color: [0.224,0.224,0.224], width: 4px }
             region-z4:
                 filter:
                     $zoom: [4]
@@ -1344,7 +1236,7 @@ layers:
                     buffer: 42px
                     font:
                         size: [[5,9px],[8,10px],[12,11px]]
-                        stroke: { color: [0.120,0.120,0.120], width: 5px }
+                        stroke: { color: [0.224,0.224,0.224], width: 5px }
 
             # _text_early:
             #     filter: { $zoom: { max: 11 } }
@@ -1510,7 +1402,7 @@ layers:
                         size: [[11, 9px], [12, 10px], [13, 12px], [14, 16px], [16, 24px]]
                         weight: normal
                         transform: uppercase
-                        stroke: { color: [0.160,0.160,0.160], width: [[12, 4px], [13, 6px], [15, 8px]] }
+                        stroke: { color: [0.224,0.224,0.224], width: [[12, 4px], [13, 6px], [15, 8px]] }
 
             z13-up:
                 filter:
@@ -1557,520 +1449,3 @@ styles:
     text-blend-order:
         base: text
         blend_order: 1
-
-    earth-dots:
-        base: polygons
-        mix: [polygons-dots]
-        shaders:
-            defines:
-                DOTS_BACKGROUND_COLOR: vec3(0.160,0.160,0.160)
-                DOTS_SIZE: 0.7
-                DOTS_TYPE: fill
-                DOTS_TILE_STYLE: tile
-                DOTS_SCALE: 18.0
-                DOTS_COLOR: vec3(0.190,0.190,0.190)
-
-    water-dots:
-        base: polygons
-        mix: [polygons-dots]
-        shaders:
-            defines:
-                DOTS_SIZE: 0.7
-                DOTS_TYPE: fill
-                DOTS_TILE_STYLE: tile
-                DOTS_SCALE: 18.0
-                DOTS_COLOR: vec3(0.050,0.050,0.050)
-
-    building-dots:
-        base: polygons
-        mix: [polygons-dots]
-        shaders:
-            defines:
-                DOTS_BACKGROUND_COLOR: vec3(0.160,0.160,0.160)
-                DOTS_SIZE: 0.7
-                DOTS_TYPE: fill
-                DOTS_TILE_STYLE: tile
-                DOTS_SCALE: 18.0
-                DOTS_COLOR: vec3(0.115,0.115,0.115)
-
-    green-area-dots:
-        base: polygons
-        mix: [polygons-dots]
-        shaders:
-            defines:
-                DOTS_BACKGROUND_COLOR: vec3(0.150,0.150,0.150)
-                DOTS_SIZE: 0.5
-                DOTS_TYPE: fill
-                DOTS_TILE_STYLE: tile
-                DOTS_SCALE: 18.0
-                DOTS_COLOR: vec3(0.195,0.195,0.195)
-
-    park-dots:
-        base: polygons
-        mix: [polygons-dots]
-        shaders:
-            defines:
-                DOTS_BACKGROUND_COLOR: vec3(0.140,0.140,0.140)
-                DOTS_SIZE: 0.8
-                DOTS_TYPE: fill
-                DOTS_TILE_STYLE: tile
-                DOTS_SCALE: 18.0
-                DOTS_COLOR: vec3(0.195,0.195,0.195)
-
-    farm-dots:
-        base: polygons
-        mix: [polygons-dots]
-        shaders:
-            defines:
-                DOTS_SIZE: 0.2
-                DOTS_TYPE: fill
-                DOTS_BACKGROUND_COLOR: vec3(0.195,0.195,0.195)
-                DOTS_TILE_STYLE: tile
-                DOTS_SCALE: 18.0
-                DOTS_COLOR: vec3(0.170,0.170,0.170)
-
-    cemetery-dots:
-        base: polygons
-        mix: [polygons-dots]
-        shaders:
-            defines:
-                DOTS_SIZE: 0.1
-                DOTS_TYPE: fill
-                DOTS_BACKGROUND_COLOR: vec3(0.175,0.175,0.175)
-                DOTS_TILE_STYLE: tile
-                DOTS_SCALE: 18.0
-                DOTS_COLOR: vec3(0.215,0.215,0.215)
-
-    forest-dots-multi:
-        base: polygons
-        mix: [polygons-dots-multi]
-        shaders:
-            defines:
-                DOTS_BACKGROUND_COLOR: vec3(0.155,0.155,0.155)
-                DOTS_TYPE: fill
-                DOTS_TILE_STYLE: tile
-                DOTS_SCALE: 18.0
-                DOTS_SIZE: 0.25
-                DOTS_COLOR: vec3(0.155)
-                DOTS_SIZE2: 0.8
-                DOTS_COLOR2: vec3(0.210,0.210,0.210)
-
-    conservation-dots-multi:
-        base: polygons
-        mix: [polygons-dots-multi]
-        shaders:
-            defines:
-                DOTS_TYPE: fill
-                DOTS_TILE_STYLE: tile
-                DOTS_SCALE: 18.0
-                DOTS_SIZE: 0.05
-                DOTS_COLOR: vec3(0.090)
-                DOTS_SIZE2: 0.7
-                DOTS_COLOR2: vec3(0.205,0.205,0.205)
-
-    park-dots-multi:
-        base: polygons
-        mix: [polygons-dots-multi]
-        shaders:
-            defines:
-                DOTS_BACKGROUND_COLOR: vec3(0.150,0.150,0.150)
-                DOTS_TYPE: fill
-                DOTS_TILE_STYLE: tile
-                DOTS_SCALE: 18.0
-                DOTS_SIZE: 0.1
-                DOTS_COLOR: vec3(0.110)
-                DOTS_SIZE2: 0.7
-                DOTS_COLOR2: vec3(0.200,0.200,0.200)
-
-    golf-dots-multi:
-        base: polygons
-        mix: [polygons-dots-multi]
-        shaders:
-            defines:
-                DOTS_BACKGROUND_COLOR: vec3(0.910)
-                DOTS_TYPE: fill
-                DOTS_TILE_STYLE: tile
-                DOTS_SCALE: 18.0
-                DOTS_SIZE: 0.09
-                DOTS_COLOR: vec3(0.920)
-                DOTS_SIZE2: 0.4
-                DOTS_COLOR2: vec3(0.875,0.875,0.875)
-
-    hospital-dots-multi:
-        base: polygons
-        mix: [polygons-dots-multi3]
-        shaders:
-            defines:
-                DOTS_TYPE: fill
-                DOTS_TILE_STYLE: tile
-                DOTS_SCALE: 18.0
-                DOTS_COLOR: vec3(0.890,0.890,0.890)
-                DOTS_COLOR2: vec3(0.880,0.880,0.880)
-                DOTS_COLOR3: vec3(0.950,0.950,0.950)
-                DOTS_SIZE: 0.15
-                DOTS_SIZE2: 0.5
-                DOTS_SIZE3: 0.9
-
-    building-dots-multi:
-        base: polygons
-        mix: [polygons-dots-multi3]
-        shaders:
-            defines:
-                DOTS_BACKGROUND_COLOR: vec3(0.160,0.160,0.160)
-                DOTS_TYPE: fill
-                DOTS_TILE_STYLE: tile
-                DOTS_SCALE: 18.0
-                DOTS_COLOR: vec3(0.075,0.075,0.075)
-                DOTS_COLOR2: vec3(0.095,0.095,0.095)
-                DOTS_COLOR3: vec3(0.200,0.200,0.200)
-                DOTS_SIZE: 0.15
-                DOTS_SIZE2: 0.5
-                DOTS_SIZE3: 0.9
-
-
-    lines-dots:
-        base: lines
-        blend: overlay
-        doc:
-            author:
-                name: Patricio Gonzalez Vivo
-                twitter: patriciogv
-            description: 'Apply a dot pattern to a line
-
-                '
-            licence: MIT
-            tangram-version: 0.0.7
-            version: 0.0.1
-        shaders:
-            blocks:
-                color: 'vec2 st = fract(v_texcoord.xy)-.5;
-
-                    color.a = 1.- step(DOTS_SIZE, dot(st,st)*2.);'
-            defines:
-                DOTS_SIZE: 0.07
-        texcoords: true
-        ui:
-            shaders:
-                defines:
-                    DOTS_SIZE:
-                        label: Size
-                        range:
-                            max: 1.0
-                            min: 0.0
-                            step: 0.01
-                        type: number
-
-    polygons-dots:
-        doc:
-            author:
-                name: Patricio Gonzalez Vivo
-                twitter: patriciogv
-            version: 0.0.1
-            tangram-version: 0.0.7
-            licence: MIT
-            description: |
-                Apply dot patterns to a polygon. To learn more about patterns check [this chapter from the Book of Shaders](https://thebookofshaders.com/09/)
-        ui:
-            shaders:
-                defines:
-                    DOTS_SCALE:
-                        type: number
-                        label: Scale
-                        range:
-                            min: 1.
-                            max: 1000.
-                            step: 1.
-                    DOTS_SIZE:
-                        type: number
-                        label: Size
-                        range:
-                            min: 0.
-                            max: 1.
-                            step: 0.01
-                    STROKE:
-                        type: number
-                        label: Stroke
-                        default_value: 0.15
-                        range:
-                            min: 0.
-                            max: 1.
-                            step: 0.01
-                    DOTS_TYPE:
-                        type: dropdownArray
-                        label: Type
-                        values: ['fill', 'stroke']
-                    DOTS_TILE_STYLE:
-                        type: dropdownArray
-                        label: 'Tile type'
-                        values: ['tile', 'brick']
-                    DOTS_COLOR:
-                        type: color
-                        label: Color
-                    DOTS_BACKGROUND_COLOR:
-                        type: color
-                        label: 'Background color'
-
-        base: polygons
-        mix: [space-tile, tiling-brick, tiling-tile, shapes-circle]
-        shaders:
-            defines:
-                DOTS_COLOR: color.rgb*.5
-                DOTS_BACKGROUND_COLOR: vec3(0.120,0.120,0.120)
-                DOTS_SCALE: 9.
-                DOTS_SIZE: 0.41
-                DOTS_TYPE: fill
-                DOTS_TILE_STYLE: brick
-            blocks:
-                color: |
-                    color.rgb = mix(DOTS_BACKGROUND_COLOR,
-                                    DOTS_COLOR,
-                                    DOTS_TYPE( DOTS_SIZE, circleDF(vec2(0.5)-DOTS_TILE_STYLE(getTileCoords()*DOTS_SCALE,2.))) );
-
-    polygons-dots-multi:
-        base: polygons
-        mix: [space-tile, tiling-brick, tiling-tile, shapes-circle]
-        shaders:
-            defines:
-                DOTS_BACKGROUND_COLOR: vec3(0.150)
-                DOTS_COLOR: vec3(0.8, 0.8, 0.)
-                DOTS_COLOR2: vec3(0.5, 0., 0.)
-                DOTS_SIZE: 0.1
-                DOTS_SIZE2: 0.4
-                DOTS_SCALE: 10.
-                DOTS_TYPE: fill
-                DOTS_TILE_STYLE: brick
-            blocks:
-                color: |
-                    color.rgb =
-                        mix(DOTS_BACKGROUND_COLOR,
-                            mix(DOTS_COLOR2,
-                                DOTS_COLOR,
-                                DOTS_TYPE(DOTS_SIZE, circleDF(vec2(0.5)-DOTS_TILE_STYLE(getTileCoords()*DOTS_SCALE,2.)))
-                            ),
-                            DOTS_TYPE(DOTS_SIZE2, circleDF(vec2(0.5)-DOTS_TILE_STYLE(getTileCoords()*DOTS_SCALE,2.)))
-                        );
-
-
-    polygons-dots-multi3:
-        base: polygons
-        mix: [space-tile, tiling-brick, tiling-tile, shapes-circle]
-        shaders:
-            defines:
-                DOTS_BACKGROUND_COLOR: vec3(0.945)
-                DOTS_COLOR: vec3(0.8, 0.8, 0.)
-                DOTS_COLOR2: vec3(1.0, 0.0, 0.)
-                DOTS_COLOR3: vec3(0.0, 1.0, 1.0)
-                DOTS_SIZE: 0.15
-                DOTS_SIZE2: 0.5
-                DOTS_SIZE3: 0.9
-                DOTS_SCALE: 12.
-                DOTS_TYPE: fill
-                DOTS_TILE_STYLE: tile
-            blocks:
-                color: |
-                    color.rgb =
-                        mix(DOTS_BACKGROUND_COLOR,
-                            mix(DOTS_COLOR2,
-                                mix(DOTS_COLOR3,
-                                DOTS_COLOR,
-                                DOTS_TYPE(DOTS_SIZE, circleDF(vec2(0.5)-DOTS_TILE_STYLE(getTileCoords()*DOTS_SCALE,2.)))
-                            ),
-                                DOTS_TYPE(DOTS_SIZE2, circleDF(vec2(0.5)-DOTS_TILE_STYLE(getTileCoords()*DOTS_SCALE,2.)))
-                            ),
-                            DOTS_TYPE(DOTS_SIZE3, circleDF(vec2(0.5)-DOTS_TILE_STYLE(getTileCoords()*DOTS_SCALE,2.)))
-                        );
-
-    shapes-circle:
-        doc:
-            author:
-                name: Patricio Gonzalez Vivo
-                twitter: patriciogv
-            version: 0.0.1
-            tangram-version: 0.0.7
-            licence: MIT
-            description: |
-                Collection of functions to draw circles. To learn more about how to make shapes on shaders go to From check [this chapter about shapes from the Book of Shaders](https://thebookofshaders.com/07/)
-            examples:
-                lego:
-                    url: https://tangrams.github.io/tangram-sandbox/styles/lego.yaml
-                    img: https://tangrams.github.io/tangram-sandbox/styles/lego.png
-                    lines: 109-110
-                patterns:
-                    url: https://tangrams.github.io/tangram-sandbox/styles/patterns.yaml
-                    img: https://tangrams.github.io/tangram-sandbox/styles/patterns.png
-                    lines: 146
-                nursery:
-                    url: https://tangrams.github.io/tangram-sandbox/styles/nursery.yaml
-                    img: https://tangrams.github.io/tangram-sandbox/styles/nursery.png
-                    lines: 146
-        test:
-            circleDF: { blocks: { color: "    color.rgb += circleDF(v_texcoord.xy-.5);" } }
-            circle: { blocks: { color: "    color.rgb += circle(v_texcoord.xy,.5);" } }
-            circleBorder: { blocks: { color: "    color.rgb += circleBorder(v_texcoord.xy,.5);" } }
-
-        mix: [shapes-type]
-        shaders:
-            blocks:
-                global: |
-                    // get distance field of a Circle
-                    // ================================
-                    float circleDF (vec2 st) {
-                        return dot(st,st)*3.03;
-                    }
-                    //
-                    // Draw a circle in the middle of the ST space
-                    // ================================
-                    float circle (vec2 st, float radius) {
-                        return fill(radius, circleDF(st-vec2(0.5)));
-                    }
-
-                    //
-                    // Draw a circle in the middle of the ST space
-                    // ================================
-                    float circleBorder (vec2 st, float radius) {
-                        return stroke(radius, circleDF(st-vec2(0.5)));
-                    }
-
-    space-tile:
-        doc:
-            author:
-                name: Patricio Gonzalez Vivo
-                twitter: patriciogv
-            version: 0.0.1
-            tangram-version: 0.0.7
-            licence: MIT
-            description: |
-                Get the position on the tile
-        test:
-            tile:
-                defines:
-                    v_pos: 'v_texcoord'
-                blocks:
-                    color: |
-                        vec2 st = getTileCoords();
-                        color.rg += fract(st*3.);
-        shaders:
-            blocks:
-                global: |
-                    // Variant to be add to both vertex and fragments shaders
-                    #ifndef v_pos
-                    varying vec3 v_pos;
-                    #endif
-
-                    //
-                    // Get the coordinates in tile space
-                    // ================================
-                    vec2 getTileCoords() {
-                        return fract(v_pos.xy);
-                    }
-
-                position: |
-                    // Normalize the attribute position of a vertex
-                    v_pos = modelPosition().xyz;
-
-    tiling-brick:
-        doc:
-            author:
-                name: Patricio Gonzalez Vivo
-                twitter: patriciogv
-            version: 0.0.1
-            tangram-version: 0.0.7
-            licence: MIT
-            description: |
-                Repeats a coordinate space (`vec2 st`) in diferent brick-like tiles N times (`float zoom`). For more information about tilling patterns read [this chapter of The Book of Shaders](https://thebookofshaders.com/09/)
-            examples:
-                nursery:
-                    url: https://tangrams.github.io/tangram-sandbox/styles/nursery.yaml
-                    img: https://tangrams.github.io/tangram-sandbox/styles/nursery.png
-                    lines: 99
-                patterns:
-                    url: https://tangrams.github.io/tangram-sandbox/styles/patterns.yaml
-                    img: https://tangrams.github.io/tangram-sandbox/styles/patterns.png
-                    lines: 130
-        test:
-            brick: { blocks: { color: "    color.rg += brick(v_texcoord.xy,5.);" } }
-        shaders:
-            blocks:
-                global: |
-                    vec2 brick (vec2 st, float zoom) {
-                        st *= zoom;
-                        // Here is where the offset is happening
-                        st.x += step(1., mod(st.y,2.0)) * 0.5;
-                        return fract(st);
-                    }
-
-    tiling-tile:
-        doc:
-            author:
-                name: Patricio Gonzalez Vivo
-                twitter: patriciogv
-            version: 0.0.1
-            tangram-version: 0.0.7
-            licence: MIT
-            description: |
-                Repeats a coordinate space (`vec2 st`) in diferent brick-like tiles N times (`float zoom`). For more information about tilling patterns read [this chapter of The Book of Shaders](https://thebookofshaders.com/09/)
-        test:
-            tile: { blocks: { color: "    color.rg += tile(v_texcoord.xy,5.);" } }
-        shaders:
-            blocks:
-                global: |
-                    // Repeats a coordinate space (st) in diferent tiles
-                    // ================================
-                    vec2 tile (vec2 st, float zoom) {
-                        st *= zoom;
-                        return fract(st);
-                    }
-
-    shapes-type:
-        doc:
-            author:
-                name: Patricio Gonzalez Vivo
-                twitter: patriciogv
-            version: 0.0.1
-            tangram-version: 0.0.7
-            licence: MIT
-            description: |
-                This block provides to functions `fill` and `stroke`. Each one transform a SDF to a fill shape or a stroke shape (border). The stroke width can be control with the define `STROKE`.
-                To learn more about how to make shapes on shaders go to From check [this chapter about shapes from the Book of Shaders](https://thebookofshaders.com/07/)
-        mix: [functions-aastep]
-        shaders:
-            defines:
-                STROKE: 0.15
-            blocks:
-                global: |
-                    float fill (in float size, in float x) {
-                        return 1.-aastep(size, x);
-                    }
-
-                    float stroke (in float size, in float x) {
-                        return aastep(size, x+STROKE*.5) - aastep(size, x-STROKE*.5);
-                    }
-
-    functions-aastep:
-        doc:
-            author:
-                name: Matt DesLauriers
-                twitter: mattdesl
-            version: 0.0.1
-            tangram-version: 0.0.7
-            licence: MIT
-            description: |
-                AnitAliased ```step()``` function implemented by [Matt DesLauriers](https://twitter.com/mattdesl) in this module <https://github.com/stackgl/glsl-aastep>
-        shaders:
-            extensions: OES_standard_derivatives
-            blocks:
-                global: |
-                    // AntiAliased Step function
-                    //=============================
-                    float aastep(float threshold, float value) {
-                        #ifdef TANGRAM_FRAGMENT_SHADER
-                            #ifdef TANGRAM_EXTENSION_OES_standard_derivatives
-                                float afwidth = length(vec2(dFdx(value), dFdy(value))) * 0.70710678118654757;
-                                return smoothstep(threshold-afwidth, threshold+afwidth, value);
-                            #else
-                                return step(threshold, value);
-                            #endif
-                        #else
-                            return step(threshold, value);
-                        #endif
-                    }
