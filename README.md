@@ -1,6 +1,6 @@
 ### xyz studio dark-style
 
-View the [xyz dot map](https://sensescape.github.io/xyz-dots/#12/37.7823/-122.4274).
+View the [xyz studio dark-style map](https://sensescape.github.io/xyz-studio-dark/).
 
 [https://explore.xyz.here.com](https://explore.xyz.here.com)
 
