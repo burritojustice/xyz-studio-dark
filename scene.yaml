@@ -795,6 +795,41 @@ layers:
                             size: 11px
                             stroke: { color: global.roads_text_stroke, width: 4px }
 
+        airport-lines:
+            filter: { kind: aeroway, kind_detail: [runway,taxiway] }
+            draw:
+                lines:
+                    color: global.mid_color
+                    cap: butt
+                    width: [[10, 1px], [13, 3px], [15, 16px], [17, 60m]]
+                    outline:
+                        color: global.white_color
+            # Features come in at zoom 9, but include mostly minor airports without POIs until z13
+            early:
+                filter: { $zoom: { max: 12 }, not: { landuse_kind: [aerodrome, runway, taxiway] } }
+                draw:
+                    lines:
+                        visible: false
+            not-round:
+                filter: { $zoom: { min: 17 } }
+                draw:
+                    lines:
+                        cap: butt
+            taxiway:
+                filter: { kind_detail: taxiway }
+                draw:
+                    lines:
+                        color: global.lighter_color
+                        width: [[14, 1px], [16, 6px], [18, 4m]]
+                        outline:
+                            width: 0.5px
+                            color: global.white_color
+                early:
+                    filter: { $zoom: { max: 13 } }
+                    draw:
+                        lines:
+                            visible: false
+
     landuse:
         data: { source: mapzen }
         filter: 
@@ -881,6 +916,14 @@ layers:
                     polygons:
                         color: [0.200,0.200,0.200]
                         visible: true
+
+        runway:
+            filter:
+                kind: runway
+            draw:
+                polygons:
+                    visible: true
+                    color: global.mid_color
 
     buildings:
         data: { source: mapzen, layer: buildings }
