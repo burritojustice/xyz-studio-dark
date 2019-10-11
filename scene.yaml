@@ -13,7 +13,7 @@ global:
 
     # Sign up for a Mapzen API key to enjoy higher rate limits
     # https://mapzen.com/documentation/overview/#developer-accounts-and-api-keys
-    sdk_api_key: '3eqm2_bfTNGZ85ar20fVyA'     # set this value to your Mapzen API key
+    sdk_api_key: 'DpCrhQqsR2igQPEINRTfcw'     # set this value to your Mapzen API key
 
     black_color:                  [0.440,0.440,0.440]
     dark_color:                   [0.410,0.410,0.410]
