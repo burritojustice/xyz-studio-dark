@@ -282,6 +282,7 @@ layers:
         data: { source: mapzen, layer: roads }
         draw:
             _lines_tilt_rotate:
+                angle: 0
                 visible: true
                 width: 1px
                 order: global.feature_order
