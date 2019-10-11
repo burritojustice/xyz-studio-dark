@@ -55,7 +55,7 @@ global:
     ux_language_text_source_boundary_lines_left_right:
         left: global.ux_language_text_source_left
         right: global.ux_language_text_source_right
-    ux_language_text_source_boundary_lines: |
+    ux_language_text_source_boundary__lines_tilt_rotate: |
         function() {
            var right = (global.ux_language && feature['name:right:'+global.ux_language]) || (global.ux_language_fallback && feature['name:right:'+global.ux_language_fallback]) || feature['name:right'];
            var left = (global.ux_language && feature['name:left:'+global.ux_language]) || (global.ux_language_fallback && feature['name:left:'+global.ux_language_fallback]) || feature['name:left'];
@@ -227,14 +227,14 @@ layers:
     earth:
         data: { source: mapzen, layer: earth }
         draw:
-            polygons:
+            _polygons_tilt_rotate:
                 order: global.feature_order
                 color: [0.224,0.224,0.224]
 
     water:
         data: { source: mapzen, layer: water }
         draw:
-            polygons:
+            _polygons_tilt_rotate:
                 order: global.feature_order
                 color: [0.145,0.145,0.145]
 
@@ -261,19 +261,19 @@ layers:
                     - { $zoom: [14], area: { min: 40000 } }
                     - { $zoom: { min: 15 } }
             draw:
-                polygons:
+                _polygons_tilt_rotate:
                     color: [0.145,0.145,0.145]
 
         other-water-areas:
             filter: { not: { kind: [ocean, lake, water, reservoir] }, $zoom: { min: 11 }, area: { min: 100 } }
             draw:
-                polygons:
+                _polygons_tilt_rotate:
                     color: [0.145,0.145,0.145]
 
         playas:
             filter: { kind: playa }
             draw:
-                polygons:
+                _polygons_tilt_rotate:
                     visible: true
                     order: global.feature_order
                     color: [0.212,0.212,0.212]
@@ -281,7 +281,7 @@ layers:
     roads:
         data: { source: mapzen, layer: roads }
         draw:
-            lines:
+            _lines_tilt_rotate:
                 visible: true
                 width: 1px
                 order: global.feature_order
@@ -299,14 +299,14 @@ layers:
         early:
             filter: { $zoom: { max: 15 } }
             draw:
-                lines:
+                _lines_tilt_rotate:
                     outline:
                         order: global.feature_order
 
         bridges-tunnels:
             filter: { any: [is_bridge: true, is_tunnel: true] }
             draw:
-                lines:
+                _lines_tilt_rotate:
                     #cap: butt
                     outline:
                         # except bridges and tunnels, their outlines should also self-sort
@@ -316,14 +316,14 @@ layers:
         default-outline-width:
             filter: { $zoom: { min: 16 } }
             draw:
-                lines:
+                _lines_tilt_rotate:
                     outline:
                         width: function () { return 3/16 * Math.log($zoom); }
 
         natural_earth_highways:
             filter: { $zoom: { min: 5, max: 8 } }
             draw:
-                lines:
+                _lines_tilt_rotate:
                     color: [[5, global.mid_color], [6, global.black_color]]
                     width: [[5, 0.5px], [6, 0.5px], [7, 0.75px]]
                     outline:
@@ -332,7 +332,7 @@ layers:
             major_road:
                 filter: { kind: major_road }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         color: [[5, global.light_color], [7, global.mid_color]]
                         width: [[5, 0.25px], [7, 0.5px]]
                         # outline:
@@ -340,7 +340,7 @@ layers:
             minor_road:
                 filter: { kind: minor_road }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         color: global.offwhite_color
                         width: 0.5px
                         # outline:
@@ -348,7 +348,7 @@ layers:
             ferry:
                 filter: { kind: ferry }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         visible: false
                         # color: global.light_color
                         # width: 0.5px
@@ -357,7 +357,7 @@ layers:
         highway:
             filter: { kind: highway, $zoom: { min: 8 } }
             draw:
-                lines:
+                _lines_tilt_rotate:
                     color: [[8, global.black_color], [13, global.black_color], [14, global.white_color]]
                     width: [[8, 1px], [13, 1px], [14, 0.1px], [15, 1.5px], [17, 8px], [18, 10m]]
                     outline:
@@ -366,7 +366,7 @@ layers:
             link:
                 filter: { is_link: true } # on- and off-ramps, etc
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         color: [[9, global.mid_color], [13, global.mid_color], [14, global.white_color]]
                         width: [[9, 0px], [13, 0.75px], [14, 0.1px], [17, 4px], [18, 5m]]
                         outline:
@@ -375,26 +375,26 @@ layers:
                 early_link:
                     filter: { $zoom: {min: 13, max: 15} }
                     draw:
-                        lines:
+                        _lines_tilt_rotate:
                             order: 352
                 tunnel-link:
                     filter: {is_tunnel: true, $zoom: { min: 13 } }
                     draw:
-                        lines:
+                        _lines_tilt_rotate:
                             color: [[13, global.light_color], [14, global.ultralight_color]]
                             outline:
                                 color: [[12, global.white_color], [13, global.light_color]]
             tunnel:
                 filter: { is_tunnel: true, $zoom: { min: 13 } }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         color: global.tunnel_color
                         outline:
                             color: [[12, global.white_color], [13, global.light_color]]
             highway_bridge:
                 filter: { is_bridge: true }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         cap: round
                         outline:
                             cap: butt
@@ -415,7 +415,7 @@ layers:
             filter: { kind: major_road, $zoom: { min: 8 } }
             # default style
             draw:
-                lines:
+                _lines_tilt_rotate:
                     color: [[8, global.black_color], [13, global.black_color], [17, global.white_color]]
                     width: [[13, 1px], [16, 1px], [17, 3px]]
                     outline:
@@ -423,7 +423,7 @@ layers:
             trunk_primary:
                 filter: { kind_detail: [trunk, primary] }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         color: [[8, global.midlight_color], [12, global.mid_color], [13, global.black_color], [14, global.white_color]]
                         width: [[8, 0.5px], [11, 0.5px], [13, 1px], [14, 0.1px], [16, 2px], [17, 8px], [18, 10m]]
                         outline:
@@ -432,20 +432,20 @@ layers:
                 early:
                     filter: { $zoom: { max: 16 } }
                     draw:
-                        lines:
+                        _lines_tilt_rotate:
                             order: 352
                             outline:
                                 order: function() { return feature.sort_rank + 2; }
                     primary:
                         filter: { kind: [primary] }
                         draw:
-                            lines:
+                            _lines_tilt_rotate:
                                 outline:
                                     order: function() { return feature.sort_rank + 1; }
                 routes:
                     filter: { ref: true }
                     draw:
-                        lines:
+                        _lines_tilt_rotate:
                             color: [[8, global.midlight_color], [12, global.mid_color], [13, global.black_color], [14, global.white_color]]
                             width: [[9, 0.5px], [13, 1px], [14, 0.1px], [15, 1.25px], [16, 2px], [17, 8px], [18, 10m]]
                             outline:
@@ -454,14 +454,14 @@ layers:
                     early:
                         filter: { $zoom: { max: 16 } }
                         draw:
-                            lines:
+                            _lines_tilt_rotate:
                                 order: function() { return feature.sort_rank + 2; }
                                 outline:
                                     order: 353
                     tunnel:
                         filter: { is_tunnel: true, $zoom: { min: 13 } }
                         draw:
-                            lines:
+                            _lines_tilt_rotate:
                                 color: global.tunnel_color
                                 outline:
                                     color: [[12, global.white_color], [13, global.light_color]]
@@ -500,7 +500,7 @@ layers:
             link:
                 filter: { is_link: true } # on- and off-ramps, etc
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         color: [[10, global.mid_color], [15, global.light_color], [16, global.white_color]]
                         width: [[10, 0.5px], [12, 0.5px], [15, 0.75px], [16, 1.75px], [17, 3px], [18, 5m]]
                         outline:
@@ -509,14 +509,14 @@ layers:
             tunnel:
                 filter: { is_tunnel: true, $zoom: { min: 13 } }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         color: global.tunnel_color
                         outline:
                             color: [[12, global.white_color], [13, global.light_color]]
             secondary:
                 filter: { kind_detail: secondary }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         color: [[10, global.lighter_color], [13, global.midlight_color], [15, global.dark_color], [16, global.white_color]]
                         width: [[10, 0.5px], [12, 0.5px], [14, 1px], [15, 1px], [16, 0.1px], [17, 7.5px], [18, 9m]]
                         outline:
@@ -525,14 +525,14 @@ layers:
                 early:
                     filter: { $zoom: { max: 16 } }
                     draw:
-                        lines:
+                        _lines_tilt_rotate:
                             order: 352
                             outline:
                                 order: 353 #function() { return feature.sort_rank + 2; }
                 routes:
                     filter: { ref: true, $zoom: { min: 12 } }
                     draw:
-                        lines:
+                        _lines_tilt_rotate:
                             color: [[10, global.lighter_color], [13, global.mid_color], [15, global.black_color], [16, global.white_color]]
                             width: [[10, 0.5px], [13, 1px], [15, 1px], [16, 0.1px], [17, 7.5px], [18, 9m]]
                             outline:
@@ -541,14 +541,14 @@ layers:
                     early:
                         filter: { $zoom: { max: 15 } }
                         draw:
-                            lines:
+                            _lines_tilt_rotate:
                                 order: function() { return feature.sort_rank + 2; }
                                 outline:
                                     order: 353
                     tunnel:
                         filter: {is_tunnel: true, $zoom: { min: 13 } }
                         draw:
-                            lines:
+                            _lines_tilt_rotate:
                                 color: global.tunnel_color
                                 outline:
                                     color: [[13, global.white_color], [14, global.white_color], [15, global.light_color]]
@@ -576,7 +576,7 @@ layers:
             tertiary:
                 filter: { kind_detail: [tertiary, tertiary_link] }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         color: [[11, global.lighter_color], [15, global.dark_color], [16, global.white_color]]
                         width: [[11, 0.5px], [15, 1px], [16, 0.1px], [17, 6px], [18, 9m]]
                         outline:
@@ -585,14 +585,14 @@ layers:
                 early:
                     filter: { $zoom: { max: 15 } }
                     draw:
-                        lines:
+                        _lines_tilt_rotate:
                             order: 352
                             outline:
                                 order: function() { return feature.sort_rank + 3; }
                 routes:
                     filter: { ref: true, $zoom: { min: 12 } }
                     draw:
-                        lines:
+                        _lines_tilt_rotate:
                             color: [[11, global.lighter_color], [15, global.dark_color], [16, global.white_color]]
                             width: [[11, 0.5px], [15, 1px], [16, 0.1px], [17, 6px], [18, 9m]]
                             outline:
@@ -601,21 +601,21 @@ layers:
                     early:
                         filter: { $zoom: { max: 15 } }
                         draw:
-                            lines:
+                            _lines_tilt_rotate:
                                 order: function() { return feature.sort_rank + 3; }
                                 outline:
                                     order: 353
                     tunnel:
                         filter: { is_tunnel: true, $zoom: { min: 13 } }
                         draw:
-                            lines:
+                            _lines_tilt_rotate:
                                 color: global.tunnel_color
                                 outline:
                                     color: [[13, global.white_color], [14, global.white_color], [15, global.light_color]]
                 link:
                     filter: { is_link: true } # on- and off-ramps, etc
                     draw:
-                        lines:
+                        _lines_tilt_rotate:
                             color: [[14, global.light_color], [15, global.dark_color], [16, global.white_color]]
                             width: [[11, 0.0px], [15, 0.5px], [16, 0.1px], [18, 4.5m]]
                             outline:
@@ -634,7 +634,7 @@ layers:
         minor_road:
             filter: { kind: minor_road, not: { kind_detail: service }, $zoom: { min: 8 } }
             draw:
-                lines:
+                _lines_tilt_rotate:
                     color: [[11, global.ultralight_color], [14, global.mid_color], [16, global.white_color]]
                     width: [[11, 0.35px], [13, 0.5px], [14, 1px], [15, 1px], [16, 0.1px], [17, 4px], [18, 9m]]
                     outline:
@@ -643,7 +643,7 @@ layers:
             early:
                 filter: { $zoom: { max: 16 } }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         order: 350
                         outline:
                             order: 351
@@ -651,21 +651,21 @@ layers:
             round:
                 filter: { $zoom: { min: 17 } }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         cap: round
                         join: round
 
             tunnel:
                 filter: {is_tunnel: true, $zoom: { min: 13 } }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         color: global.tunnel_color
                         outline:
                             color: [[13, global.white_color], [14, global.white_color], [15, global.light_color]]
             minor_road_bridge:
                 filter: { is_bridge: true }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         cap: round
                         outline:
                             cap: butt
@@ -682,7 +682,7 @@ layers:
         service_road:
             filter: { kind: minor_road, kind_detail: service, $zoom: { min: 13 } }
             draw:
-                lines:
+                _lines_tilt_rotate:
                     color: [[13, global.offwhite_color], [15, global.midlight_color], [16, global.white_color]]
                     width: [[13, 0px], [15, 0.75px], [16, 0.1px], [17, 2.5px], [18, 5m]]
                     outline:
@@ -706,33 +706,33 @@ layers:
                 not:
                     - kind_detail: [steps, track, pier]
             draw:
-                lines:
+                _lines_tilt_rotate:
                     color: global.white_color
                     width: [[14, 0px], [16, 0.15px], [17, 2.5px], [20, 3m]]
             early:
                 filter:
                     $zoom: { max: 15 }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         order: 351
                         outline:
                             order: 350
             pedestrian:
                 filter: { kind_detail: pedestrian }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         color: global.white_color
                         width: [[14, 0px], [16, 0.15px], [17, 2.5px], [20, 3m]]
             footway:
                 filter: { kind_detail: footway }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         color: global.white_color
                         width: [[14, 0px], [16, 0.15px], [17, 2.5px], [20, 3m]]
                 bridge:
                     filter: { is_bridge: true }
                     draw:
-                        lines:
+                        _lines_tilt_rotate:
                             cap: round
                             outline:
                                 color: [[13, global.light_color], [15, global.mid_color]]
@@ -740,7 +740,7 @@ layers:
             bridge:
                 filter: { is_bridge: true }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         cap: round
                         outline:
                             color: global.mid_color
@@ -758,13 +758,13 @@ layers:
         track:
             filter: { kind: path, kind_detail: track }
             draw:
-                lines:
+                _lines_tilt_rotate:
                     color: global.white_color
                     width: [[13, 0px], [16, 0.15px], [17, 2.5px], [20, 4m]]
             bridge:
                 filter: { is_bridge: true }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         cap: butt
                         color: global.white_color
                         outline:
@@ -788,7 +788,7 @@ layers:
                     - kind: path
                     - kind_detail: steps
             draw:
-                lines:
+                _lines_tilt_rotate:
                     dash: [0.75, 0.75]
                     dash_background_color: global.white_color
                     order: global.feature_order
@@ -805,10 +805,10 @@ layers:
                             size: 11px
                             stroke: { color: global.roads_text_stroke, width: 4px }
 
-        airport-lines:
+        airport-_lines_tilt_rotate:
             filter: { kind: aeroway, kind_detail: [runway,taxiway] }
             draw:
-                lines:
+                _lines_tilt_rotate:
                     color: global.mid_color
                     cap: butt
                     width: [[10, 1px], [13, 3px], [15, 16px], [17, 60m]]
@@ -818,17 +818,17 @@ layers:
             early:
                 filter: { $zoom: { max: 12 }, not: { landuse_kind: [aerodrome, runway, taxiway] } }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         visible: false
             not-round:
                 filter: { $zoom: { min: 17 } }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         cap: butt
             taxiway:
                 filter: { kind_detail: taxiway }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         color: global.lighter_color
                         width: [[14, 1px], [16, 6px], [18, 4m]]
                         outline:
@@ -837,7 +837,7 @@ layers:
                 early:
                     filter: { $zoom: { max: 13 } }
                     draw:
-                        lines:
+                        _lines_tilt_rotate:
                             visible: false
 
     landuse:
@@ -845,10 +845,10 @@ layers:
         filter: 
             $zoom: { min: 7 }
         draw:
-            polygons:
+            _polygons_tilt_rotate:
                 order: global.feature_order
                 visible: false
-            lines:
+            _lines_tilt_rotate:
                 order: global.feature_order
                 visible: false
         # tier1:
@@ -860,7 +860,7 @@ layers:
                     - not: { operator: [ "United States Forest Service" ] }
                     - protect_class: ['2','3','5']
             draw:
-                polygons:
+                _polygons_tilt_rotate:
                     color: [0.200,0.200,0.200]
                     visible: true
             us_national_park:
@@ -870,7 +870,7 @@ layers:
                         - operator: [ "United States National Park Service" ]
                         - protect_class: ['2','3','5']
                 draw:
-                    polygons:
+                    _polygons_tilt_rotate:
                         color: [0.200,0.200,0.200]
                         visible: true
 
@@ -880,7 +880,7 @@ layers:
                 kind: [protected_area, nature_reserve, national_park]
                 not: { protect_class: ['2','3','5']}
             draw:
-                polygons:
+                _polygons_tilt_rotate:
                     color: [0.200,0.200,0.200]
                     visible: true
 
@@ -892,14 +892,14 @@ layers:
                     - protect_class: ['6']
                     - operator: ['United States Forest Service']
             draw:
-                polygons:
+                _polygons_tilt_rotate:
                     color: [0.200,0.200,0.200]
                     visible: true
 
         forest-landcover:
             filter: { kind: [forest, natural_forest, wood, natural_wood, natural_park], $zoom: { min: 10 }, not: { operator: "United States Forest Service" } }
             draw:
-                polygons:
+                _polygons_tilt_rotate:
                     color: [0.200,0.200,0.200]
                     visible: true
 
@@ -913,7 +913,7 @@ layers:
                     - not: { protect_class: ['2','3','5','6'] }
             # default for national forests and more?
             draw:
-                polygons:
+                _polygons_tilt_rotate:
                     color: [0.200,0.200,0.200]
                     visible: true
             national_park:
@@ -923,7 +923,7 @@ layers:
                         - kind: national_park
                         - not: [ protect_class: ['2','3','5','6'], operator: [ "United States National Park Service"] ]
                 draw:
-                    polygons:
+                    _polygons_tilt_rotate:
                         color: [0.200,0.200,0.200]
                         visible: true
 
@@ -931,7 +931,7 @@ layers:
             filter:
                 kind: runway
             draw:
-                polygons:
+                _polygons_tilt_rotate:
                     visible: true
                     color: global.mid_color
 
@@ -940,7 +940,7 @@ layers:
         filter:
             not: { location: underground }
         draw:
-            polygons:
+            _polygons_tilt_rotate:
                 visible: false
                 order: 438
                 color: [0.259,0.259,0.259]
@@ -957,14 +957,14 @@ layers:
                     - { $zoom: [16], volume: { min: 50000 } }
                     - { $zoom: { min: 17 }, area: true }
             draw:
-                polygons:
+                _polygons_tilt_rotate:
                     visible: true
 
     boundaries:
         data: { source: mapzen, layer: boundaries }
         # country subdivisions (states, provinces)
         draw:
-            lines:
+            _lines_tilt_rotate:
                 order: global.feature_order
         country:
             filter:
@@ -977,7 +977,7 @@ layers:
                     order: function() { return (feature.sort_rank -1); }
                     color: [0.180,0.180,0.180]
                     width: [[0, 0px], [4, 2px], [8, 6px], [14, 8px], [17, 16m]]
-                lines:
+                _lines_tilt_rotate:
                     color: [0.145,0.145,0.145]
                     width: [[0, 0px], [5, 0px], [6, 1px], [14, 15px]]
             water:
@@ -985,7 +985,7 @@ layers:
                 draw:
                     country-outerline:
                         visible: false
-                    lines:
+                    _lines_tilt_rotate:
                         visible: false
             country-labels:
                 filter: { name: true, $zoom: { min: 8 }, not: { maritime_boundary: true } }
@@ -1011,7 +1011,7 @@ layers:
         other_country_boundary_disputed_etc:
             filter: { kind: [disputed, indefinite, indeterminate, lease_limit, line_of_control, overlay_limit] }
             draw:
-                lines:
+                _lines_tilt_rotate:
                     dash: [1.25, 1.25]
                     order: global.feature_order
                     color: [0.180,0.180,0.180]
@@ -1019,7 +1019,7 @@ layers:
             disputed:
                 filter: { kind: [disputed, line_of_control] }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         dash: [2.0, 1.0]
                         order: global.feature_order
                         color: [0.180,0.180,0.180]
@@ -1031,7 +1031,7 @@ layers:
                     - kind: [region,macroregion]
                     - kind_detail: [3,4]
             draw:
-                lines:
+                _lines_tilt_rotate:
                     color: [0.169,0.169,0.169]
                     # width: [[0, 0.5px], [9, 2px], [14, 4px], [16, 6.5px], [17, 16m]]
                     width: [[0, 0.5px], [14, 3px], [16, 7px], [17, 17m]]
@@ -1039,20 +1039,20 @@ layers:
             water:
                 filter: { maritime_boundary: true }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         visible: false
 
             dash-borders:
                 filter:
                     $zoom: { min: 7 }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         dash: [7.0, 3.0]
 
             early:
                 filter: { not: { min_zoom: [1,2] }, $zoom: { max: 8 } }
                 draw:
-                    lines:
+                    _lines_tilt_rotate:
                         visible: false
 
             region-labels:
@@ -1450,7 +1450,7 @@ layers:
                     priority: 29
                     buffer: 8px
                     text_wrap: 10
-                    max_lines: 2
+                    max__lines_tilt_rotate: 2
                     font:
                         fill: [0.450,0.450,0.450]
                         size: [[11, 9px], [12, 10px], [13, 12px], [14, 16px], [16, 24px]]
@@ -1501,5 +1501,72 @@ styles:
         blend: overlay
                     
     text-blend-order:
-        base: text
+        base: _text_tilt_rotate
         blend_order: 1
+    geometry-tilt:
+        animated: true
+        shaders:
+            defines:
+                PI: 3.1415926535897932384626433832795
+                HALF_PI: 1.5707963267948966192313216916398
+            blocks:
+                global: |
+                    mat3 rotateX3D(float phi){
+                        return mat3(
+                            vec3(1.,0.,0.),
+                            vec3(0.,cos(phi),-sin(phi)),
+                            vec3(0.,sin(phi),cos(phi)));
+                    }
+                    mat3 rotateZ3D(float psi){
+                        return mat3(
+                            vec3(cos(psi),-sin(psi),0.),
+                            vec3(sin(psi),cos(psi),0.),
+                            vec3(0.,0.,1.));
+                    }
+                position: |
+                    float t = u_time*0.1; 
+                    float z = smoothstep(0.7,1.,max((u_map_position.z)/20.,0.)*0.9);
+                    position.xyz = rotateX3D(z*HALF_PI) * rotateZ3D(sin(t)*PI*z) * position.xyz;
+    geometry-normal:
+        shaders:
+            blocks:
+                global: |
+                    // Ask to the geometry normals if this surface is a Wall
+                    bool isWall() {
+                        return dot(v_normal,vec3(0.,0.,1.)) == 0.0;
+                    }
+                    //
+                    // Ask to the geometry normals if this surface is a roof
+                    bool isRoof() {
+                        return dot(v_normal,vec3(0.,0.,1.)) == 0.0;
+                    }
+
+    _polygons_tilt_rotate:
+        texcoords: true
+        base: polygons
+        mix: [functions-map, geometry-tilt]
+        shaders:
+            blocks:
+                filter: |
+                    color.rgb += vec3(1.0)* min( 1.-(worldPosition().z*.001 + .7) , 0.5 );
+    _lines_tilt_rotate:
+        texcoords: true
+        base: lines
+        mix: [functions-map, geometry-tilt]
+        shaders:
+            blocks:
+                filter: |
+                    color.rgb += vec3(1.0)* min( 1.-(worldPosition().z*.001 + .7) , 0.5 );
+    _points_tilt_rotate:
+        texcoords: true
+        base: points
+        mix: [functions-map, geometry-tilt]
+        shaders:
+            blocks:
+                filter: |
+                    color.rgb += vec3(1.0)* min( 1.-(worldPosition().z*.001 + .7) , 0.5 );
+    _text_tilt_rotate:
+        texcoords: true
+        base: text
+        mix: [functions-map, geometry-tilt]
+        
